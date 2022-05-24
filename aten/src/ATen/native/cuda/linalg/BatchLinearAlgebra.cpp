@@ -1917,6 +1917,10 @@ static void lu_factor(const Tensor& input, const Tensor& pivots, const Tensor& i
 
 
 #if AT_MAGMA_ENABLED()
+  int64_t batch_size = batchCount(input);
+#endif
+
+#if AT_MAGMA_ENABLED()
   const auto lu_factor_magma = [batch_size](const Tensor& input, const Tensor& pivots, const Tensor& infos, const bool compute_pivots) {
     if (batch_size == 1) {
         lu_factor_looped_magma(input, pivots, infos, compute_pivots);
