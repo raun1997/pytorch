@@ -542,7 +542,6 @@ void PythonTracer::start() {
       "PythonTracer should not have active contexts");
 
   pybind11::gil_scoped_acquire gil;
-  auto t0 = now();
 
   // Loop over all threads within the current interpreter. We will need to
   // register a trace function with each thread. We set the current thread to
